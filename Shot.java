@@ -7,14 +7,16 @@ import javafx.scene.paint.Paint;
  * @author Bernardo Copstein and Rafael Copstein
  */
 public class Shot extends BasicElement{
-    public Shot(int px,int py){
+    public Shot(int px,int py, int dirV, int dirH, int speed){
         super(px,py);
+
+        setDirV(dirV);
+        setDirH(dirH);
+        setSpeed(speed);
     }
     
     @Override
     public void start(){
-        setDirV(-1);
-        setSpeed(3);
     }
             
     @Override

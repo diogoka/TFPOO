@@ -1,6 +1,7 @@
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
 import java.util.List;
+import javafx.scene.paint.Paint;
 import java.util.LinkedList;
 
 /**
@@ -66,6 +67,8 @@ public class Game {
     }
     
     public void Draw(GraphicsContext graphicsContext) {
+        graphicsContext.setFill(Paint.valueOf("808080"));
+        graphicsContext.fillRect(0, 0, Params.WINDOW_WIDTH, Params.WINDOW_HEIGHT);
         for(Character c:activeChars){
             c.Draw(graphicsContext);
         }

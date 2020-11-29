@@ -9,13 +9,15 @@ import javafx.scene.paint.Paint;
 public interface Character {
     int getX();
     int getY();
-    int getAltura();
-    int getLargura();
-    
+    int getHeight();
+    int getWidth();
+
     void testaColisao(Character c);
-    boolean jaColidiu();
-    void setColidiu();
-    
+    void resetColliding();
+    boolean isColliding();
+    boolean isCollided();
+    void setCollided();
+
     void start();
     boolean isActive();
     void Update();

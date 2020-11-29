@@ -1,5 +1,4 @@
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Paint;
 
 /**
@@ -10,16 +9,17 @@ public class Ball extends BasicElement{
     public Ball(int px,int py){
         super(px,py);
     }
-    
+
     @Override
     public void start(){
         setDirH(1);
     }
-    
-        
+
+
     @Override
     public void Update(){
-        if (jaColidiu()){
+        if (isCollided()){
+            Game.getInstance().onEnemyKilled();
             deactivate();
         }else{
             setPosX(getX() + getDirH() * getSpeed());
@@ -31,11 +31,11 @@ public class Ball extends BasicElement{
                 setSpeed(Params.getInstance().nextInt(5)+1);
             }
         }
-    }    
-    
+    }
+
     public void Draw(GraphicsContext graphicsContext){
         graphicsContext.setFill(Paint.valueOf("#0000FF"));
         graphicsContext.fillOval(getX(), getY(), 32, 32);
-    }    
+    }
 }
 

@@ -10,28 +10,46 @@ public class Canhao extends BasicElement implements KeyboardCtrl{
     private boolean pressingLeft = false;
     private boolean pressingRight = false;
     private boolean firing = false;
+    private int lives = 3;
     private int fireDelay = 100;
     private long lastFiredTime = System.currentTimeMillis();
-    public Canhao(int px,int py){
-        super(px,py);
-    }    
-    
+
     @Override
     public void start() {
-        setLimH(20,Params.WINDOW_WIDTH-20);
-        setLimV(Params.WINDOW_HEIGHT-100,Params.WINDOW_HEIGHT);
+        setDimensions(32, 48);
+        setSpeed(10);
+        setPosY(Params.GAME_HEIGHT-getHeight());
+        setLimV(Params.GAME_HEIGHT-getHeight(),Params.GAME_HEIGHT);
     }
-    
+
+    private void move(int xDelta, int yDelta) {
+        setPosX(Math.min(Math.max(getLMinH(), getX() + xDelta), getLMaxH() - getWidth()));
+        setPosY(Math.min(Math.max(getLMinV(), getY() + yDelta), getLMaxV() - getHeight()));
+    }
+
+    public void setLives(int lives) {
+        this.lives = lives;
+    }
+
+    public int getLives() {
+        return lives;
+    }
+
     @Override
     public void Update() {
-        if (pressingLeft) setPosX(getX() + -getSpeed());
-        if (pressingRight) setPosX(getX() + getSpeed());
+        if(isColliding()) {
+            setLives(lives-1);
+            Game.getInstance().onPlayerDamage();
+        }
+        if (pressingLeft) move(-getSpeed(), 0);
+        if (pressingRight) move(getSpeed(), 0);
+
         if (firing && System.currentTimeMillis() - lastFiredTime > fireDelay) {
-            Game.getInstance().addChar(new Shot(getX() + 16, getY() - 32, -1, 0, 15));
+            Game.getInstance().addChar(new Shot(getX() + 16, getY() - 40, -1, 0, 15));
             lastFiredTime = System.currentTimeMillis();
         }
     }
-    
+
     @Override
     public void OnInput(KeyCode keyCode, boolean isPressed) {
         switch (keyCode) {
@@ -46,11 +64,11 @@ public class Canhao extends BasicElement implements KeyboardCtrl{
                 break;
         }
     }
-    
+
     @Override
     public void Draw(GraphicsContext graphicsContext) {
         graphicsContext.setFill(Paint.valueOf("#FF0000"));
         graphicsContext.fillRect(getX(), getY()+16, 32, 32);
-        graphicsContext.fillRect(getX()+8, getY()-16, 16, 48);        
-    }   
+        graphicsContext.fillRect(getX()+8, getY(), 16, 16);
+    }
 }

@@ -31,7 +31,7 @@ public class Shot extends BasicElement{
                 
     @Override
     public void Update(){
-        if (jaColidiu()){
+        if (isCollided()){
             deactivate();
         }else{
             setPosY(getY() + getDirV() * getSpeed());

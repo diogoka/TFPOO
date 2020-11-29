@@ -66,7 +66,7 @@ public class Game {
 
     public void Update(long currentTime, long deltaTime) {
         if(canhao.getLives() == 0) {
-            System.out.println("Faleceu");
+            System.out.println("Game Over");
             //printar na tela o game over
         }
 

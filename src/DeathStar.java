@@ -2,6 +2,7 @@ package src;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Paint;
+import javafx.scene.text.Font;
 
 public class DeathStar extends StormTrooper {
     private Timer shotTimer;
@@ -35,5 +36,7 @@ public class DeathStar extends StormTrooper {
     public void Draw(GraphicsContext graphicsContext){
             graphicsContext.setFill(Paint.valueOf("#666666"));
             graphicsContext.fillRect(getX(), getY(), getLargura(), getAltura());
+            graphicsContext.setFont(Font.font(20));
+            graphicsContext.fillText(getLifes() + "♥", getX(), getY() + -5);
     }
 }

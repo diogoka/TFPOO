@@ -33,7 +33,6 @@ public abstract class StormTrooper extends BasicElement {
                 setLifes( getLifes() -1 );
                 System.out.println(getLifes());
                 if (getLifes() == 0 ) {
-                    System.out.println("teste");
                     deactivate();
                     Game.getInstance().onEnemyKilled(this);
                 }

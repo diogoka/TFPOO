@@ -3,18 +3,18 @@ package src;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Paint;
 
-public class DeathStar extends StormTrooper {
+public class DarthVader extends StormTrooper {
     private Timer shotTimer;
 
-    public DeathStar(int px, int py) {
-        super(px, py, 2);
+    public DarthVader(int px, int py) {
+        super(px, py, 1);
     }
 
     @Override
     public void start() {
-        shotTimer = new Timer(0.3f, true);
+        shotTimer = new Timer(0.6f, true);
         shotTimer.addHandler(loop -> {
-            Game.getInstance().addChar(new Shot(getX()+16, getY()+getAltura(), 1, 0, 8, this, "#854747"));
+            Game.getInstance().addChar(new Shot(getX()+16, getY()+getAltura(), 1, 0, 5, this, "#e60500"));
         });
         super.start();
     }
@@ -33,7 +33,7 @@ public class DeathStar extends StormTrooper {
 
     @Override
     public void Draw(GraphicsContext graphicsContext){
-            graphicsContext.setFill(Paint.valueOf("#666666"));
-            graphicsContext.fillRect(getX(), getY(), getLargura(), getAltura());
+        graphicsContext.setFill(Paint.valueOf("#808080"));
+        graphicsContext.fillRect(getX(), getY(), getLargura(), getAltura());
     }
 }

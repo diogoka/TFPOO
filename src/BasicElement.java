@@ -8,6 +8,7 @@ import javafx.scene.canvas.GraphicsContext;
  */
 public abstract class BasicElement implements Character{
     private int posX, posY;
+    private int lifes;
     private int largura, altura;
     private int lminH,lmaxH;
     private int lminV,lmaxV;
@@ -109,7 +110,9 @@ public abstract class BasicElement implements Character{
     public int getSpeed(){
         return(speed);
     }
-    
+
+    public int getLifes() { return lifes; }
+
     public void setPosX(int p){
         posX = p;
     }
@@ -121,6 +124,10 @@ public abstract class BasicElement implements Character{
     public void setLargAlt(int l,int a){
         largura = l;
         altura = a;
+    }
+
+    public void setLifes( int l) {
+        lifes = l;
     }
     
     public void setDirH(int dirH){

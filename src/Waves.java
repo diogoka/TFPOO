@@ -12,7 +12,7 @@ public final class Waves {
                     "                   ",
                     "                   ",
                     "                   ",
-                    "                   ",
+                    "      3    3       ",
                     "     1  1   1  1   ",
                     "                   ",
                     "                   ",
@@ -128,13 +128,16 @@ public final class Waves {
             for (int x = 0; x < line.length(); x++) {
                 switch (line.charAt(x)) {
                     case '0':
-                        enemies.add(new DeathStar(x * cellX, y * cellY));
+                        enemies.add(new DarthVader(x * cellX, y * cellY));
                         break;
                     case '1':
                         enemies.add(new GroupStormTrooper(x * cellX, y * cellY));
                         break;
                     case '2':
                         enemies.add(new TimerStormTrooper(x * cellX, y * cellY, 5 + (int)Math.floor(Math.random() * 10)));
+                        break;
+                    case '3':
+                        enemies.add(new DeathStar(x * cellX, y * cellY));
                         break;
                 }
             }

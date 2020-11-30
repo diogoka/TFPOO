@@ -10,7 +10,7 @@ public class TimerStormTrooper extends StormTrooper {
 
     // se o tempo acabar adiciona novas estrelas da morte
     public TimerStormTrooper(int px, int py, int secondsAlive) {
-        super(px, py);
+        super(px, py, 1);
         timer = new Timer(1f, true);
         timer.addHandler(loop -> {
             time--;

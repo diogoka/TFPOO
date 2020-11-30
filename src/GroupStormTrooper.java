@@ -8,7 +8,7 @@ import java.util.List;
 
 public class GroupStormTrooper extends StormTrooper {
     public GroupStormTrooper(int px, int py) {
-        super(px, py);
+        super(px, py, 1);
     }
 
     @Override

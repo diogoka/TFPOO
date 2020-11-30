@@ -6,7 +6,6 @@ import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
-import javafx.scene.Node;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -19,11 +18,11 @@ import javafx.scene.text.TextAlignment;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UIManager {
-    private static UIManager instance;
+public class Manager {
+    private static Manager instance;
 
-    public static UIManager getInstance() {
-        if (instance == null) instance = new UIManager();
+    public static Manager getInstance() {
+        if (instance == null) instance = new Manager();
         return instance;
     }
 
@@ -36,7 +35,6 @@ public class UIManager {
     private Text lifesTxt;
     private Button configBtn;
     private Text configTitle;
-    private Text configVolumeTxt;
     private Button configExit;
     private Text gameOverText;
     private Text fpsText;
@@ -48,7 +46,7 @@ public class UIManager {
     private int fpsAux = 0;
     private long lastFpsTime = 0;
 
-    private UIManager() {
+    private Manager() {
         scores = FXCollections.observableList(new ArrayList<>());
 
         gameStackPane = new StackPane();
@@ -143,9 +141,6 @@ public class UIManager {
         configTitle = new Text("Configurações");
         configTitle.setFill(Paint.valueOf("#dddddd"));
         configTitle.setFont(Font.font(30));
-        configVolumeTxt = new Text("Volume:");
-        configVolumeTxt.setFill(Paint.valueOf("#dddddd"));
-        configVolumeTxt.setFont(Font.font(24));
         configExit = new Button("Sair");
         configExit.setBackground(new Background(new BackgroundFill(Paint.valueOf("#232323"), null, null)));
         configExit.setTextFill(Paint.valueOf("#dddddd"));

@@ -35,9 +35,9 @@ public class Main extends Application {
 
         Canvas canvas = new Canvas(Params.GAME_WIDTH, Params.GAME_HEIGHT);
 
-        UIManager uiManager = UIManager.getInstance();
-        uiManager.setCanvas(canvas);
-        uiManager.setRoot(root);
+        Manager manager = Manager.getInstance();
+        manager.setCanvas(canvas);
+        manager.setRoot(root);
 
         // Setup Game object
         Game.getInstance().Start();
@@ -66,7 +66,7 @@ public class Main extends Application {
                 Game.getInstance().Update(currentNanoTime, deltaTime);
                 gc.clearRect(0, 0, Params.GAME_WIDTH, Params.GAME_HEIGHT);
                 Game.getInstance().Draw(gc);
-                UIManager.getInstance().Update(currentNanoTime, deltaTime);
+                Manager.getInstance().Update(currentNanoTime, deltaTime);
 
                 lastNanoTime = currentNanoTime;
             }

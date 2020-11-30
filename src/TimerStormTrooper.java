@@ -1,15 +1,14 @@
 package src;
 
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 
-public class TimerEnemy extends Enemy {
+public class TimerStormTrooper extends StormTrooper {
     private int time;
     private Timer timer;
 
-    public TimerEnemy(int px, int py, int secondsAlive) {
+    public TimerStormTrooper(int px, int py, int secondsAlive) {
         super(px, py);
         timer = new Timer(1f, true);
         timer.addHandler(loop -> {
@@ -18,7 +17,7 @@ public class TimerEnemy extends Enemy {
                 deactivate();
                 for(int y=0; y < 3; y++){
                     for(int x=0; x < 3; x++){
-                        Game.getInstance().addChar(new Spaceship(getX() + x * 35 - 30, getY() + y * 35 - 30));
+                        Game.getInstance().addChar(new DeathStar(getX() + x * 35 - 30, getY() + y * 35 - 30));
                     }
                 }
             }

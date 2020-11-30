@@ -49,15 +49,15 @@ public class Game {
         spawnWave();
     }
 
-    public void onEnemyKilled(Enemy enemy) {
+    public void onEnemyKilled(StormTrooper stormTrooper) {
         score++;
-        if (getChars(Enemy.class).size() == 0) {
+        if (getChars(StormTrooper.class).size() == 0) {
             onAllWaveKilled();
         }
-        addChar(new FloatingPoint(enemy.getX(), enemy.getY(), 1));
+        addChar(new FloatingPoint(stormTrooper.getX(), stormTrooper.getY(), 1));
     }
 
-    public void onEnemyReachEnd(Enemy enemy) {
+    public void onEnemyReachEnd(StormTrooper stormTrooper) {
         if (died) return;
         eliminate(canhao);
         onDie();
@@ -79,7 +79,7 @@ public class Game {
         lastTimeDied = System.currentTimeMillis();
         canhao.deactivate();
         // Substituir pelos scores reais do player
-        UIManager.getInstance().setScores(Arrays.asList(new Score[]{
+        Manager.getInstance().setScores(Arrays.asList(new Score[]{
                 new Score(1),
                 new Score(2),
                 new Score(3),
@@ -89,7 +89,7 @@ public class Game {
                 new Score(4444),
         }));
 
-        UIManager.getInstance().setGameOverVisible(true);
+        Manager.getInstance().setGameOverVisible(true);
     }
 
     public void Start() {
@@ -125,9 +125,9 @@ public class Game {
     }
 
     private void spawnWave() {
-        List<Enemy> enemies = Waves.getWaveEnemies(wave);
-        for (Enemy enemy : enemies) {
-            addChar(enemy);
+        List<StormTrooper> enemies = Waves.getWaveEnemies(wave);
+        for (StormTrooper stormTrooper : enemies) {
+            addChar(stormTrooper);
         }
         wave++;
     }
@@ -152,9 +152,9 @@ public class Game {
             // Timed play again
             if (System.currentTimeMillis() - lastTimeDied > 5000) {
                 resetGame();
-                UIManager.getInstance().setGameOverVisible(false);
+                Manager.getInstance().setGameOverVisible(false);
             } else {
-                UIManager.getInstance().setGameOverVisible(true);
+                Manager.getInstance().setGameOverVisible(true);
                 canhao.deactivate();
             }
         }*/

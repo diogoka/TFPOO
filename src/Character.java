@@ -16,10 +16,10 @@ public interface Character {
     void resetColidindo();
     void setColidivel(boolean colidivel);
     boolean isColidivel();
-    boolean isColidindo();
-    Character getColidindoChar();
-    boolean jaColidiu();
-    void setColidiu();
+    boolean isColliding();
+    Character getCollidingChar();
+    boolean IsCollided();
+    void setCollided();
     
     void start();
     boolean isActive();

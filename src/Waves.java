@@ -111,8 +111,8 @@ public final class Waves {
             },
     };
 
-    public static List<Enemy> getWaveEnemies(int index) {
-        List<Enemy> enemies = new LinkedList<>();
+    public static List<StormTrooper> getWaveEnemies(int index) {
+        List<StormTrooper> enemies = new LinkedList<>();
         if (waves.length == 0) return enemies;
         if (index < 0) {
             index = 0;
@@ -128,13 +128,13 @@ public final class Waves {
             for (int x = 0; x < line.length(); x++) {
                 switch (line.charAt(x)) {
                     case '0':
-                        enemies.add(new Spaceship(x * cellX, y * cellY));
+                        enemies.add(new DeathStar(x * cellX, y * cellY));
                         break;
                     case '1':
-                        enemies.add(new GroupEnemy(x * cellX, y * cellY));
+                        enemies.add(new GroupStormTrooper(x * cellX, y * cellY));
                         break;
                     case '2':
-                        enemies.add(new TimerEnemy(x * cellX, y * cellY, 5 + (int)Math.floor(Math.random() * 5)));
+                        enemies.add(new TimerStormTrooper(x * cellX, y * cellY, 5 + (int)Math.floor(Math.random() * 5)));
                         break;
                 }
             }

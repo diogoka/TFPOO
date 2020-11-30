@@ -3,8 +3,8 @@ package src;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Paint;
 
-public abstract class Enemy extends BasicElement {
-    public Enemy(int px, int py) {
+public abstract class StormTrooper extends BasicElement {
+    public StormTrooper(int px, int py) {
         setPosX(px);
         setPosY(py);
     }
@@ -16,13 +16,12 @@ public abstract class Enemy extends BasicElement {
 
     @Override
     public void Update(long currentTime, long deltaTime){
-        if (isColidindo()){
-            Character colidindoChar = getColidindoChar();
+        if (isColliding()){
+            Character collidingChar = getCollidingChar();
 
-            // Inimigo é destruido apenas por contato com canhao ou shot de um canhao
-            if ( colidindoChar instanceof Canhao ||
-                (colidindoChar instanceof Shot &&
-                ((Shot)colidindoChar).getOwner() instanceof Canhao)) {
+            if ( collidingChar instanceof Canhao ||
+                (collidingChar instanceof Shot &&
+                ((Shot)collidingChar).getOwner() instanceof Canhao)) {
                 deactivate();
                 Game.getInstance().onEnemyKilled(this);
             }

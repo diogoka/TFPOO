@@ -45,7 +45,7 @@ public class Shot extends BasicElement{
     @Override
     public void Update(long currentTime, long deltaTime){
         autoDestroyTimer.Update(deltaTime);
-        if (jaColidiu()) {
+        if (IsCollided()) {
             deactivate();
         }
         setPosY(getY() + getDirV() * getSpeed());

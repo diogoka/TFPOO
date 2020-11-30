@@ -14,9 +14,9 @@ public abstract class BasicElement implements Character{
     private int speed;
     private boolean active;
     private boolean colidivel;
-    private boolean colidiu;
-    private Character colidindoChar;
-    private boolean colidindo;
+    private boolean collided;
+    private Character collidingChar;
+    private boolean colliding;
     private int direction_horizontal, direction_vertical;
 
     public BasicElement() {
@@ -31,9 +31,9 @@ public abstract class BasicElement implements Character{
         direction_horizontal = 0;
         direction_vertical = 0;
         active = true;
-        colidiu = false;
-        colidindo = false;
-        colidindoChar = null;
+        collided = false;
+        colliding = false;
+        collidingChar = null;
         colidivel = true;
         speed = 2;
         lminH = 0;
@@ -75,19 +75,11 @@ public abstract class BasicElement implements Character{
         int op2x = op1x+outro.getLargura();
         int op2y = op1y+outro.getAltura();
 
-        // Verifica colisão
         if (p1x < op2x && p2x > op1x && p1y < op2y && p2y > op1y){
-            colidindo = true;
-            colidindoChar = outro;
-            colidiu = true;
-            //outro.setColidiu();
+            colliding = true;
+            collidingChar = outro;
+            collided = true;
         }
-        /*// Verifica colisão
-        if ( ((p1x <= op1x && p2x >= op1x) && (p1y <= op1y && p2y >= op1y)) ||
-             ((p1x <= op2x && p2x >= op2x) && (p1y <= op2y && p2y >= op2y)) ){
-            colidiu = true;
-            //outro.setColidiu();
-        }*/
     }
     
     public int getDirH(){
@@ -160,18 +152,18 @@ public abstract class BasicElement implements Character{
 
     @Override
     public void resetColidindo() {
-        colidindo = false;
-        colidindoChar = null;
+        colliding = false;
+        collidingChar = null;
     }
 
     @Override
-    public boolean isColidindo() {
-        return colidindo;
+    public boolean isColliding() {
+        return colliding;
     }
 
     @Override
-    public Character getColidindoChar() {
-        return colidindoChar;
+    public Character getCollidingChar() {
+        return collidingChar;
     }
 
     @Override
@@ -185,13 +177,13 @@ public abstract class BasicElement implements Character{
     }
 
     @Override
-    public boolean jaColidiu(){
-        return(colidiu);
+    public boolean IsCollided(){
+        return(collided);
     }
     
     @Override
-    public void setColidiu(){
-        colidiu = true;
+    public void setCollided(){
+        collided = true;
     }
     
     @Override

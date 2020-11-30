@@ -40,7 +40,7 @@ public class Canhao extends BasicElement implements KeyboardCtrl{
 
     @Override
     public void Update(long currentTime, long deltaTime) {
-        if(isColidindo()) {
+        if(isColliding()) {
             setLives(lives-1);
             Game.getInstance().onPlayerDamage();
         }

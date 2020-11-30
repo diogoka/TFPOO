@@ -4,6 +4,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Paint;
 
 public abstract class StormTrooper extends BasicElement {
+    private int lifesDeathStar = 2;
     public StormTrooper(int px, int py) {
         setPosX(px);
         setPosY(py);

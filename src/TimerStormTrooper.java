@@ -8,6 +8,7 @@ public class TimerStormTrooper extends StormTrooper {
     private int time;
     private Timer timer;
 
+    // se o tempo acabar adiciona novas estrelas da morte
     public TimerStormTrooper(int px, int py, int secondsAlive) {
         super(px, py);
         timer = new Timer(1f, true);

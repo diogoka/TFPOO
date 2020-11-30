@@ -10,8 +10,9 @@ import javafx.scene.paint.Paint;
 public class Shot extends BasicElement{
     private Character owner;
     private Timer autoDestroyTimer;
+    private String shotColor;
 
-    public Shot(int px,int py, int dirV, int dirH, int speed, Character owner){
+    public Shot(int px,int py, int dirV, int dirH, int speed, Character owner, String shotColor){
         super(px,py);
 
         autoDestroyTimer = new Timer(5f, false);
@@ -23,6 +24,7 @@ public class Shot extends BasicElement{
         setSpeed(speed);
         setLargAlt(3, 10);
         this.owner = owner;
+        this.shotColor = shotColor;
     }
 
     public Character getOwner() {
@@ -55,7 +57,7 @@ public class Shot extends BasicElement{
 
     @Override
     public void Draw(GraphicsContext graphicsContext){
-        graphicsContext.setFill(Paint.valueOf("#cc0000"));
+        graphicsContext.setFill(Paint.valueOf(shotColor));
         graphicsContext.fillRect(getX(), getY(), getLargura(), getAltura());
     }
 }

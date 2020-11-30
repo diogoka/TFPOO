@@ -14,7 +14,7 @@ public class DeathStar extends StormTrooper {
     public void start() {
         shotTimer = new Timer(0.6f, true);
         shotTimer.addHandler(loop -> {
-            Game.getInstance().addChar(new Shot(getX()+16, getY()+getAltura(), 1, 0, 5, this));
+            Game.getInstance().addChar(new Shot(getX()+16, getY()+getAltura(), 1, 0, 5, this, "#e60500"));
         });
         super.start();
     }

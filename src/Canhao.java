@@ -48,7 +48,7 @@ public class Canhao extends BasicElement implements KeyboardCtrl{
         if (pressingRight) move(getSpeed(), 0);
 
         if (firing && System.currentTimeMillis() - lastFiredTime > fireDelay) {
-            Game.getInstance().addChar(new Shot(getX() + 16, getY() - 16, -1, 0, 15, this));
+            Game.getInstance().addChar(new Shot(getX() + 16, getY() - 16, -1, 0, 15, this, "#2aff06"));
             lastFiredTime = System.currentTimeMillis();
         }
     }
@@ -66,8 +66,6 @@ public class Canhao extends BasicElement implements KeyboardCtrl{
                 firing = isPressed;
                 break;
         }
-        //if (keyCode == KeyCode.UP) do nothing
-        //if (keyCode == KeyCode.DOWN) do nothing
     }
     
     @Override

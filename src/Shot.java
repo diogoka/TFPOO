@@ -34,7 +34,6 @@ public class Shot extends BasicElement{
             
     @Override
     public void testaColisao(Character outro){
-        // Não verifica colisão de um tiro com outro tiro
         if (outro instanceof Shot){
             return;
         }
@@ -49,16 +48,14 @@ public class Shot extends BasicElement{
             deactivate();
         }
         setPosY(getY() + getDirV() * getSpeed());
-        // Se chegou na parte superior da tela ...
         if (getY() <= getLMinV()){
-            // Desaparece
             deactivate();
         }
     }
 
     @Override
     public void Draw(GraphicsContext graphicsContext){
-        graphicsContext.setFill(Paint.valueOf("#00FF00"));
+        graphicsContext.setFill(Paint.valueOf("#cc0000"));
         graphicsContext.fillRect(getX(), getY(), getLargura(), getAltura());
     }
 }

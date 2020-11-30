@@ -11,9 +11,9 @@ public final class Waves {
                     "                   ",
                     "                   ",
                     "                   ",
-                    "        111        ",
                     "                   ",
-                    "     1       1     ",
+                    "                   ",
+                    "     1  1   1  1   ",
                     "                   ",
                     "                   ",
                     "                   ",
@@ -21,11 +21,11 @@ public final class Waves {
             new String[]{
                     "                   ",
                     "                   ",
+                    "      0 0 0 0  0   ",
                     "                   ",
+                    "     1 1 1 1 1 1   ",
                     "                   ",
-                    "     1 1 1 1 1     ",
-                    "      0  0  0      ",
-                    "     1 1 1 1 1     ",
+                    "     1 1 1 1 1 1   ",
                     "                   ",
                     "                   ",
                     "                   ",
@@ -34,9 +34,9 @@ public final class Waves {
             new String[]{
                     "   0 0 0 0 0 0 0   ",
                     "                   ",
-                    "     1 11111 1     ",
-                    "      1     1      ",
-                    "         0         ",
+                    "   1 1 1 1 1 1 1 1 ",
+                    "                   ",
+                    "   0      0     0  ",
                     "                   ",
                     "                   ",
                     "                   ",
@@ -48,8 +48,8 @@ public final class Waves {
                     "         0         ",
                     "                   ",
                     "         2         ",
-                    "        111        ",
-                    "         1         ",
+                    "     1 1 0 1111 1 1",
+                    "         2         ",
                     "                   ",
                     "                   ",
                     "                   ",
@@ -76,7 +76,7 @@ public final class Waves {
                     "    111     111    ",
                     "                   ",
                     "    11       11    ",
-                    "    11111111111    ",
+                    "    22222222222    ",
                     "                   ",
                     "                   ",
                     "                   ",
@@ -84,13 +84,13 @@ public final class Waves {
                     "                   ",
             },
             new String[]{
-                    "  000000000000000  ",
-                    "         2         ",
-                    "  1 1 1 1 1 1 1 1  ",
-                    "   1 1 1 1 1 1 1   ",
-                    "  1 1 1 1 1 1 1 1  ",
                     "                   ",
-                    "      2     2      ",
+                    "    0000     2 0000",
+                    "  2 2 1 1 1 1 1 1  ",
+                    "   1 1 2 1 1 1 1   ",
+                    "  1 1 1 2 0 1 1 0  ",
+                    "                   ",
+                    "      2  2   2     ",
                     "                   ",
                     "                   ",
                     "                   ",
@@ -103,7 +103,7 @@ public final class Waves {
                     "                   ",
                     "  1 1 1 1 1 1 1 1  ",
                     "   1 101 1 101 1   ",
-                    "  1 1 1 1 1 1 1 1  ",
+                    "  2 2 2 2 2 0 0 0  ",
                     "                   ",
                     "                   ",
                     "                   ",
@@ -111,7 +111,7 @@ public final class Waves {
             },
     };
 
-    public static List<StormTrooper> getWaveEnemies(int index) {
+    public static List<StormTrooper> getWaveStorm(int index) {
         List<StormTrooper> enemies = new LinkedList<>();
         if (waves.length == 0) return enemies;
         if (index < 0) {
@@ -134,7 +134,7 @@ public final class Waves {
                         enemies.add(new GroupStormTrooper(x * cellX, y * cellY));
                         break;
                     case '2':
-                        enemies.add(new TimerStormTrooper(x * cellX, y * cellY, 5 + (int)Math.floor(Math.random() * 5)));
+                        enemies.add(new TimerStormTrooper(x * cellX, y * cellY, 5 + (int)Math.floor(Math.random() * 10)));
                         break;
                 }
             }

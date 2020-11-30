@@ -54,7 +54,6 @@ public class Game {
         if (getChars(StormTrooper.class).size() == 0) {
             onAllWaveKilled();
         }
-        addChar(new FloatingPoint(stormTrooper.getX(), stormTrooper.getY(), 1));
     }
 
     public void onEnemyReachEnd(StormTrooper stormTrooper) {
@@ -125,7 +124,7 @@ public class Game {
     }
 
     private void spawnWave() {
-        List<StormTrooper> enemies = Waves.getWaveEnemies(wave);
+        List<StormTrooper> enemies = Waves.getWaveStorm(wave);
         for (StormTrooper stormTrooper : enemies) {
             addChar(stormTrooper);
         }

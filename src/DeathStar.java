@@ -33,7 +33,7 @@ public class DeathStar extends StormTrooper {
 
     @Override
     public void Draw(GraphicsContext graphicsContext){
-            graphicsContext.setFill(Paint.valueOf("#007700"));
+            graphicsContext.setFill(Paint.valueOf("#808080"));
             graphicsContext.fillRect(getX(), getY(), getLargura(), getAltura());
     }
 }

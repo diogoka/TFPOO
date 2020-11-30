@@ -4,6 +4,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Paint;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.LinkedList;
@@ -15,6 +16,7 @@ import java.util.stream.Collectors;
  */
 public class Game {
     private static Game game = null;
+    private ArrayList<Score> list =  new ArrayList<>();
     private Canhao canhao;
     private Timer particleSpawner;
     private List<Character> activeChars;
@@ -77,17 +79,11 @@ public class Game {
         died = true;
         lastTimeDied = System.currentTimeMillis();
         canhao.deactivate();
-        // Substituir pelos scores reais do player
-        Manager.getInstance().setScores(Arrays.asList(new Score[]{
-                new Score(1),
-                new Score(2),
-                new Score(3),
-                new Score(4),
-                new Score(5),
-                new Score(8),
-                new Score(4444),
-        }));
 
+        //salva score do jogador
+        list.add(new Score(getScore()));
+        Manager.getInstance().setScores(list);
+        
         Manager.getInstance().setGameOverVisible(true);
     }
 

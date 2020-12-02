@@ -24,6 +24,7 @@ public class Game {
     private boolean died = false;
     private long lastTimeDied = 0;
     private int wave = 0;
+    private int dificulty = 0;
     private boolean paused = false;
     
     private Game() {
@@ -120,11 +121,26 @@ public class Game {
     }
 
     private void spawnWave() {
-        List<StormTrooper> enemies = Waves.getWaveStorm(wave);
+        List<StormTrooper> enemies = WavesEasy.getWaveStorm(wave);
+
+        switch (dificulty) {
+            case 0:
+                enemies = WavesEasy.getWaveStorm(wave);
+            case 1:
+                 enemies = Waves.getWaveStorm(wave);
+            case 2:
+                 enemies = WavesEasy.getWaveStorm(wave);
+        }
+
         for (StormTrooper stormTrooper : enemies) {
             addChar(stormTrooper);
         }
         wave++;
+    }
+
+    public void changeDificulty(Integer dif) {
+        dificulty = dif;
+        resetGame();
     }
 
     public void resetGame() {

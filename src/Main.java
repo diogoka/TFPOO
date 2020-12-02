@@ -26,13 +26,6 @@ public class Main extends Application {
         Group root = new Group();
         Scene scene = new Scene( root );
         stage.setScene( scene );
-        try {
-            scene.getStylesheets().add("src/styles.css");
-        }
-        catch (Exception e) {
-            System.out.println("Nao foi possivel carregar o css " + e.getMessage());
-        }
-
         Canvas canvas = new Canvas(Params.GAME_WIDTH, Params.GAME_HEIGHT);
 
         Manager manager = Manager.getInstance();

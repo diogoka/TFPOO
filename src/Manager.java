@@ -1,5 +1,6 @@
 package src;
 
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.HPos;
@@ -35,16 +36,14 @@ public class Manager {
     private Text lifesTxt;
     private Button configBtn;
     private Text configTitle;
+    private ChoiceBox configDifficulty;
+    private Text configDifficultyText;
     private Button configExit;
     private Text gameOverText;
-    private Text fpsText;
     private Button gameOverPlayAgainBtn;
-    private Slider volumeSlider;
     private ObservableList<Score> scores;
 
     private double bounceAnimAux = 0;
-    private int fpsAux = 0;
-    private long lastFpsTime = 0;
 
     private Manager() {
         scores = FXCollections.observableList(new ArrayList<>());
@@ -77,19 +76,14 @@ public class Manager {
             Game.getInstance().setPaused(true);
         });
 
-        fpsText = new Text("Fps: 0");
-        fpsText.setFill(Paint.valueOf("#00ff00"));
-        fpsText.setFont(Font.font(12));
 
-        header.addColumn(0, fpsText);
-        header.addColumn(1, lifesTxt);
-        header.addColumn(2, scoreTxt);
-        header.addColumn(3, configBtn);
+        header.addColumn(0, lifesTxt);
+        header.addColumn(1, scoreTxt);
+        header.addColumn(2, configBtn);
         header.getColumnConstraints().addAll(
                 new ColumnConstraints(50, 50, 50),
                 new ColumnConstraints(-1, -1, -1, Priority.ALWAYS, HPos.CENTER, true),
-                new ColumnConstraints(-1, -1, -1, Priority.ALWAYS, HPos.CENTER, true),
-                new ColumnConstraints(100, 100, 100)
+                new ColumnConstraints(-1, -1, -1, Priority.ALWAYS, HPos.CENTER, true)
         );
         borderPane.setTop(header);
 
@@ -141,7 +135,7 @@ public class Manager {
         configTitle = new Text("Configurações");
         configTitle.setFill(Paint.valueOf("#dddddd"));
         configTitle.setFont(Font.font(30));
-        configExit = new Button("Sair");
+        configExit = new Button("Voltar ao jogo");
         configExit.setBackground(new Background(new BackgroundFill(Paint.valueOf("#232323"), null, null)));
         configExit.setTextFill(Paint.valueOf("#dddddd"));
         configExit.setPrefWidth(120);
@@ -152,7 +146,20 @@ public class Manager {
             Game.getInstance().setPaused(false);
         });
         configsPane.setVisible(false);
+        configDifficultyText = new Text("Selecione a dificuldade");
+        configDifficultyText.setFill(Paint.valueOf("#dddddd"));
+        configDifficulty =  new ChoiceBox(FXCollections.observableArrayList(
+                "Easy", "Normal", "Hard")
+        );
+        configDifficulty.setValue("Easy");
+        configDifficulty.getSelectionModel().selectedIndexProperty().addListener(
+                (ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> {
+                    changeDificulty(new_val);
+                });
+        System.out.println(configDifficulty.getSelectionModel().getSelectedItem());
         configsPane.getChildren().add(configTitle);
+        configsPane.getChildren().add(configDifficultyText);
+        configsPane.getChildren().add(configDifficulty);
         configsPane.getChildren().add(configExit);
         configsPane.setAlignment(Pos.TOP_CENTER);
         configsPane.setSpacing(20);
@@ -163,21 +170,28 @@ public class Manager {
         gameStackPane.getChildren().add(gameOverPane);
         gameStackPane.getChildren().add(configsPane);
         borderPane.setCenter(gameStackPane);
+
     }
 
     public void setScores(List<Score> scores) {
         this.scores.setAll(scores);
     }
 
+    public void changeDificulty(Number  new_val) {
+        switch (new_val.intValue()) {
+            case 0:
+                Game.getInstance().changeDificulty(new_val.intValue());
+            case 1:
+                Game.getInstance().changeDificulty(new_val.intValue());
+            case 2:
+                Game.getInstance().changeDificulty(new_val.intValue());
+        }
+    }
+
     public void Update(long currentNanoTime, long deltaTime) {
         scoreTxt.setText("Score: " + Game.getInstance().getScore());
         lifesTxt.setText("Lifes: " + Game.getInstance().getLifes());
-        fpsAux++;
-        if (currentNanoTime - lastFpsTime > 1000000000) {
-            lastFpsTime = currentNanoTime;
-            fpsText.setText("Fps: " + fpsAux);
-            fpsAux = 0;
-        }
+
         gameOverPlayAgainBtn.setScaleX(1d + Math.abs(Math.sin(bounceAnimAux)) / 5d);
         bounceAnimAux += 0.05;
         if (bounceAnimAux > 3.14) bounceAnimAux = 0;

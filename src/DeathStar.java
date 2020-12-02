@@ -7,8 +7,8 @@ import javafx.scene.text.Font;
 public class DeathStar extends StormTrooper {
     private Timer shotTimer;
 
-    public DeathStar(int px, int py) {
-        super(px, py, 2);
+    public DeathStar(int px, int py, int lifes) {
+        super(px, py, lifes);
     }
 
     @Override

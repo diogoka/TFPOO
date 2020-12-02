@@ -2,6 +2,7 @@ package src;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Paint;
+import javafx.scene.text.Font;
 
 public abstract class StormTrooper extends BasicElement {
     public StormTrooper(int px, int py, int lifes) {
@@ -44,5 +45,10 @@ public abstract class StormTrooper extends BasicElement {
     public void Draw(GraphicsContext graphicsContext){
         graphicsContext.setFill(Paint.valueOf("#00ff00"));
         graphicsContext.fillRect(getX(), getY(), getLargura(), getAltura());
+
+        if(getLifes() > 1) {
+            graphicsContext.setFont(Font.font(20));
+            graphicsContext.fillText(getLifes() + "♥", getX(), getY() + -5);
+        }
     }
 }

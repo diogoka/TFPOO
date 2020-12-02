@@ -154,9 +154,9 @@ public class Manager {
         configDifficulty.setValue("Easy");
         configDifficulty.getSelectionModel().selectedIndexProperty().addListener(
                 (ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> {
+                    System.out.println(configDifficulty.getSelectionModel().getSelectedItem());
                     changeDificulty(new_val);
                 });
-        System.out.println(configDifficulty.getSelectionModel().getSelectedItem());
         configsPane.getChildren().add(configTitle);
         configsPane.getChildren().add(configDifficultyText);
         configsPane.getChildren().add(configDifficulty);

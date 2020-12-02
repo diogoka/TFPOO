@@ -12,7 +12,7 @@ public final class WavesEasy {
                     "                   ",
                     "                   ",
                     "                   ",
-                    "      3  3  3  3   ",
+                    "                   ",
                     "     1  1   1  1   ",
                     "                   ",
                     "                   ",
@@ -21,7 +21,7 @@ public final class WavesEasy {
             new String[]{
                     "                   ",
                     "                   ",
-                    "      0 0 0 0  0   ",
+                    "       0    0      ",
                     "                   ",
                     "     1 1 1 1 1 1   ",
                     "                   ",
@@ -36,19 +36,19 @@ public final class WavesEasy {
                     "                   ",
                     "   1 1 1 1 1 1 1 1 ",
                     "                   ",
-                    "   0      0     0  ",
                     "                   ",
                     "                   ",
                     "                   ",
+                    "     1    1   1    ",
                     "                   ",
                     "                   ",
                     "                   ",
             },
             new String[]{
-                    "         0         ",
+                    "                   ",
                     "                   ",
                     "         2         ",
-                    "     1 1 0 1111 1 1",
+                    "     1 1 0 1 1     ",
                     "         2         ",
                     "                   ",
                     "                   ",
@@ -74,9 +74,9 @@ public final class WavesEasy {
                     "                   ",
                     "    111     111    ",
                     "    111     111    ",
-                    "                   ",
+                    "         22        ",
                     "    11       11    ",
-                    "    22222222222    ",
+                    "    0  00  00 0    ",
                     "                   ",
                     "                   ",
                     "                   ",
@@ -85,12 +85,12 @@ public final class WavesEasy {
             },
             new String[]{
                     "                   ",
-                    "    0000     2 0000",
+                    "    0000   0000    ",
                     "  2 2 1 1 1 1 1 1  ",
                     "   1 1 2 1 1 1 1   ",
                     "  1 1 1 2 0 1 1 0  ",
                     "                   ",
-                    "      2  2   2     ",
+                    "         3         ",
                     "                   ",
                     "                   ",
                     "                   ",
@@ -99,11 +99,11 @@ public final class WavesEasy {
             new String[]{
                     "  0      0      0  ",
                     "                   ",
-                    "  2 2 2  2  2 2 2  ",
+                    "  2 3 2  3  2 3 2  ",
                     "                   ",
                     "  1 1 1 1 1 1 1 1  ",
                     "   1 101 1 101 1   ",
-                    "  2 2 2 2 2 0 0 0  ",
+                    "  2 2 3 2 2 0 3 0  ",
                     "                   ",
                     "                   ",
                     "                   ",
@@ -128,16 +128,16 @@ public final class WavesEasy {
             for (int x = 0; x < line.length(); x++) {
                 switch (line.charAt(x)) {
                     case '0':
-                        enemies.add(new DarthVader(x * cellX, y * cellY));
+                        enemies.add(new DarthVader(x * cellX, y * cellY, 1));
                         break;
                     case '1':
-                        enemies.add(new GroupStormTrooper(x * cellX, y * cellY));
+                        enemies.add(new GroupStormTrooper(x * cellX, y * cellY, 1));
                         break;
                     case '2':
-                        enemies.add(new TimerStormTrooper(x * cellX, y * cellY, 5 + (int)Math.floor(Math.random() * 10)));
+                        enemies.add(new TimerStormTrooper(x * cellX, y * cellY, 5 + (int)Math.floor(Math.random() * 10), 1));
                         break;
                     case '3':
-                        enemies.add(new DeathStar(x * cellX, y * cellY));
+                        enemies.add(new DeathStar(x * cellX, y * cellY, 2));
                         break;
                 }
             }

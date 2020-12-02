@@ -5,7 +5,6 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Paint;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.LinkedList;
 import java.util.stream.Collectors;
@@ -121,15 +120,14 @@ public class Game {
     }
 
     private void spawnWave() {
-        List<StormTrooper> enemies = WavesEasy.getWaveStorm(wave);
+        List<StormTrooper> enemies;
 
-        switch (dificulty) {
-            case 0:
-                enemies = WavesEasy.getWaveStorm(wave);
-            case 1:
-                 enemies = Waves.getWaveStorm(wave);
-            case 2:
-                 enemies = WavesEasy.getWaveStorm(wave);
+        if (dificulty == 0) {
+            enemies = WavesEasy.getWaveStorm(wave);
+        } else if (dificulty == 1) {
+            enemies = WavesNormal.getWaveStorm(wave);
+        } else {
+             enemies = WavesHard.getWaveStorm(wave);
         }
 
         for (StormTrooper stormTrooper : enemies) {
@@ -159,16 +157,6 @@ public class Game {
 
     public void Update(long currentTime, long deltaTime) {
         if (paused) return;
-        /*if(died) {
-            // Timed play again
-            if (System.currentTimeMillis() - lastTimeDied > 5000) {
-                resetGame();
-                Manager.getInstance().setGameOverVisible(false);
-            } else {
-                Manager.getInstance().setGameOverVisible(true);
-                canhao.deactivate();
-            }
-        }*/
 
         particleSpawner.Update(deltaTime);
         for(int i=0;i<activeChars.size();i++) {

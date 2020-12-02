@@ -3,12 +3,13 @@ package src;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Paint;
+import javafx.scene.text.Font;
 
 import java.util.List;
 
 public class GroupStormTrooper extends StormTrooper {
-    public GroupStormTrooper(int px, int py) {
-        super(px, py, 1);
+    public GroupStormTrooper(int px, int py, int lifes) {
+        super(px, py, lifes);
     }
 
     @Override
@@ -46,5 +47,10 @@ public class GroupStormTrooper extends StormTrooper {
     public void Draw(GraphicsContext graphicsContext){
             graphicsContext.setFill(Paint.valueOf("#007777"));
             graphicsContext.fillRect(getX(), getY(), getLargura(), getAltura());
+
+        if(getLifes() > 1) {
+            graphicsContext.setFont(Font.font(20));
+            graphicsContext.fillText(getLifes() + "♥", getX(), getY() + -5);
+        }
     }
 }

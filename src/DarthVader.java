@@ -2,12 +2,13 @@ package src;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Paint;
+import javafx.scene.text.Font;
 
 public class DarthVader extends StormTrooper {
     private Timer shotTimer;
 
-    public DarthVader(int px, int py) {
-        super(px, py, 1);
+    public DarthVader(int px, int py, int lifes) {
+        super(px, py, lifes);
     }
 
     @Override
@@ -35,5 +36,10 @@ public class DarthVader extends StormTrooper {
     public void Draw(GraphicsContext graphicsContext){
         graphicsContext.setFill(Paint.valueOf("#808080"));
         graphicsContext.fillRect(getX(), getY(), getLargura(), getAltura());
+
+        if(getLifes() > 1) {
+            graphicsContext.setFont(Font.font(20));
+            graphicsContext.fillText(getLifes() + "♥", getX(), getY() + -5);
+        }
     }
 }
